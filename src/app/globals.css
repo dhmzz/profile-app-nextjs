@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-custom: "Custom", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Tailwind tokens are used directly; theme variables are applied on body */
+
+/* Theme variables consumed directly in styles; Tailwind utilities used in JSX. */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-custom);
+}
+
+/* Custom font placeholder - put your file in public/fonts/custom.woff2 */
+@font-face {
+  font-family: "Custom";
+  src: url("/fonts/custom.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Note: Additional utility classes can be added later using Tailwind utilities in JSX. */

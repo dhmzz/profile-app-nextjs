@@ -1,0 +1,8 @@
+[
+  { "id": "TTEP", "year": 2025, "title": "Toyota Technical Education Program", "category": "PT. TOYOTA ASTRA MOTOR", "imagePath": "images/projects/TTEP.jpg" },
+  { "id": "ENVCS", "year": 2024, "title": "E - New Vehicle Check Sheet", "category": "PT. TOYOTA MOTOR MANUFACTURING INDONESIA", "imagePath": "/images/projects/ENVCS2.jpg" },
+  { "id": "TALENT", "year": 2024, "title": "Talent Digitalization", "category": "PT. TOYOTA MOTOR MANUFACTURING INDONESIA", "imagePath": "/images/projects/TALENT_DIGITALIZATION.png" },
+  { "id": "QIS", "year": 2024, "title": "Quality Information System", "category": "PT. TOYOTA MOTOR MANUFACTURING INDONESIA", "imagePath": "/images/projects/QIS.png" },
+  { "id": "DX", "year": 2023, "title": "DX Maintenance Breakdown Module", "category": "PT. TOYOTA MOTOR MANUFACTURING INDONESIA", "imagePath": "/images/projects/DX.jpg" },
+  { "id": "SIMAKS", "year": 2023, "title": "Sistem Manajemen Kendaraan Sampah", "category": "Dinas Lingkungan Hidup Kota Bandung", "imagePath": "/images/projects/SIMAKS.png" }
+]

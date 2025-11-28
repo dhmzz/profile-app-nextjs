@@ -1,0 +1,23 @@
+export default function Hero() {
+  return (<>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
+        <div className="h-px bg-black/10 dark:bg-white/10" />
+    </div>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2 flex items-center justify-between">
+        <div className="tracking-widest text-[12px] sm:text-[12px]">01<br/><span className="opacity-70">HI THERE</span></div>
+        <div className="tracking-widest text-[12px]">SELECTED WORK<br/><span className="opacity-70">2023 - 2025</span></div>
+    </div>
+
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 lg:pt-10" aria-labelledby="hero-heading">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8">
+        <div className="lg:col-span-4 flex flex-col gap-2 text-sm">
+          <p className="max-w-xs opacity-90 mt-11">Welcome to the online portfolio of Dhimaz. An experienced digital designer and developer.</p>
+        </div>
+        <div className="lg:col-span-8">
+          <h1 id="hero-heading" className="text-[48px] sm:text-[72px] lg:text-[144px] font-extrabold tracking-[-0.04em] leading-[0.9] uppercase">DHIMAZ</h1>
+        </div>
+      </div>
+    </section>
+    </>
+  );
+}
