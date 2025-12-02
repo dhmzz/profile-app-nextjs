@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16 border-t border-black/10 dark:border-white/10">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm" data-aos="fade-up">
         <p className="opacity-70">© {new Date().getFullYear()} Dhimaz</p>
         <nav aria-label="Footer">
           <ul className="flex items-center gap-6 uppercase text-xs tracking-widest">

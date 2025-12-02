@@ -26,16 +26,16 @@ export default function ProjectsList() {
   }, [active?.imagePath]);
 
   return (<>
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24" data-aos="fade-down">
         <div className="h-px bg-black/10 dark:bg-white/10" />
     </div>
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 lg:pt-10" aria-labelledby="hero-heading">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8">
-        <div className="lg:col-span-6 flex flex-col gap-2 text-sm">
+        <div className="lg:col-span-6 flex flex-col gap-2 text-sm" data-aos="fade-right" data-aos-delay="100">
           {/* <p className="uppercase tracking-widest opacity-70">Hi there</p> */}
           <p className="max-w-xs opacity-90">I've been fortunate to work with a lot of awesome people on even more awesome projects.</p>
         </div>
-        <div className="lg:col-span-6">
+        <div className="lg:col-span-6" data-aos="fade-left" data-aos-delay="100">
           <h1 id="hero-heading" className="text-[48px] sm:text-[72px] lg:text-[82px] font-extrabold tracking-[-0.04em] leading-[0.9] uppercase">Recent Projects</h1>
         </div>
       </div>
@@ -45,8 +45,10 @@ export default function ProjectsList() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <div className="lg:col-span-7">
           <h2 id="projects-heading" className="sr-only">Selected Works</h2>
-          {projects.map((p) => (
-            <ProjectItem key={p.id} project={p} onHover={setActive} />
+          {projects.map((p, index) => (
+            <div key={p.id} data-aos="fade-up" data-aos-delay={index * 50}>
+              <ProjectItem project={p} onHover={setActive} />
+            </div>
           ))}
         </div>
 
