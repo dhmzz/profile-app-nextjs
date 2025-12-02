@@ -63,7 +63,6 @@ export default function ProjectsList() {
                   )}
                 </div>
               </ImageSlot>
-              TEst 123
             </div>
           </div>
         </div>
