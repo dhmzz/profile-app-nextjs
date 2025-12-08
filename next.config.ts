@@ -1,10 +1,9 @@
-import type { NextConfig } from "next";
+// next.config.ts
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  eslint: {
-    ignoreDuringBuilds: true, // mematikan ESLint
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Hanya sisakan konfigurasi yang valid di sini
+  // Misalnya: output: 'standalone', basePath: '/app', dll.
 };
 
-export default nextConfig;
+module.exports = nextConfig;
