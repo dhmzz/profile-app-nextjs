@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import TechTags from "./TechTags";
 
 export type Project = {
   id: string;
@@ -8,6 +9,8 @@ export type Project = {
   title: string;
   category: string;
   imagePath?: string;
+  tech?: string[];
+  description?: string;
 };
 
 export default function ProjectItem({
@@ -69,6 +72,20 @@ export default function ProjectItem({
             <img src={project.imagePath} alt={project.title} className="w-full h-auto" />
           ) : (
             <div className="w-full h-40 bg-black/10 dark:bg-white/10" />
+          )}
+          {/* Tech tags for mobile */}
+          {project.tech && project.tech.length > 0 && (
+            <div className="mt-4">
+              <TechTags tags={project.tech} />
+            </div>
+          )}
+          {/* Description for mobile */}
+          {project.description && (
+            <div className="mt-3" data-aos="fade-up" data-aos-delay="250">
+              <p className="text-sm leading-relaxed text-black/60 dark:text-white/60 max-w-prose">
+                {project.description}
+              </p>
+            </div>
           )}
         </div>
 

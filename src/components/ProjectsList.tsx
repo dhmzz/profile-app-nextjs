@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import ProjectItem, { Project } from "./ProjectItem";
 import ImageSlot from "./ImageSlot";
+import TechTags from "./TechTags";
 import projectsData from "@/data/projects.json";
 
 export default function ProjectsList() {
@@ -54,7 +55,7 @@ export default function ProjectsList() {
 
         {/* Preview panel - desktop only */}
         <div className="lg:col-span-5 hidden lg:block">
-          <div className="sticky top-24">
+          <div className="sticky top-24" data-aos="fade-left" data-aos-delay="200">
             <div className="relative">
               <ImageSlot ratio="auto" label={active?.title ?? "Project Preview"} className="bg-transparent">
                 <div className={`mask-radial-[100%_100%] mask-radial-from-20% mask-radial-at-top ... transition-opacity duration-1000 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
@@ -65,6 +66,20 @@ export default function ProjectsList() {
                   )}
                 </div>
               </ImageSlot>
+              {/* Tech tags for desktop preview */}
+              {active?.tech && active.tech.length > 0 && (
+                <div className="mt-4">
+                  <TechTags tags={active.tech} />
+                </div>
+              )}
+              {/* Description for desktop preview */}
+              {active?.description && (
+                <div className="mt-3" data-aos="fade-up" data-aos-delay="250">
+                  <p className="text-sm leading-relaxed text-black/60 dark:text-white/60 max-w-prose">
+                    {active.description}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
