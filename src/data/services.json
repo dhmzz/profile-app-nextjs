@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Framework for backend development",
+    "sub": ".NET Core, NestJS, ExpressJS, Laravel, Codeigniter"
+  },
+  {
+    "id": 2,
+    "title": "Framework for backend development",
+    "sub": "VueJS, ReactJS, Blade, Razor"
+  },
+  {
+    "id": 3,
+    "title": "Databases",
+    "sub": "MySQL, MsSql, Redis, PostgreSQL"
+  }
+]
