@@ -1,6 +1,15 @@
 export default function About() {
-  return (
+  return (<>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24" data-aos="fade-down">
+      <div className="h-px bg-black/10 dark:bg-white/10" />
+    </div>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2 flex items-center justify-between" data-aos="fade-down" data-aos-delay="100">
+        <div className="tracking-widest text-[12px] sm:text-[12px]">03<br/><span className="opacity-70">GET TO KNOW ME</span></div>
+        <div className="tracking-widest text-[12px]">MY WORK</div>
+    </div>
+    
     <section id="about" aria-labelledby="about-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+
       <h2 id="about-heading" className="text-xl font-semibold tracking-tight mb-8" data-aos="fade-up">About</h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
         <div data-aos="fade-up" data-aos-delay="100">
@@ -17,5 +26,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  );
+  </>);
 }

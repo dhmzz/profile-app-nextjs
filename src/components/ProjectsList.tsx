@@ -30,6 +30,11 @@ export default function ProjectsList() {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-24" data-aos="fade-down">
         <div className="h-px bg-black/10 dark:bg-white/10" />
     </div>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2 flex items-center justify-between" data-aos="fade-down" data-aos-delay="100">
+        <div className="tracking-widest text-[12px] sm:text-[12px]">02<br/><span className="opacity-70">WORKS</span></div>
+        <div className="tracking-widest text-[12px]">SELECTED</div>
+    </div>
+
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 lg:pt-10" aria-labelledby="hero-heading">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8">
         <div className="lg:col-span-6 flex flex-col gap-2 text-sm" data-aos="fade-right" data-aos-delay="100">
