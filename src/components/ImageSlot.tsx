@@ -27,7 +27,8 @@ export default function ImageSlot({
   return (
     <div
       className={[
-        "w-full overflow-hidden bg-black/5 dark:bg-white/5 rounded-sm",
+        "w-full overflow-hidden rounded-sm",
+        children ? "" : "bg-line",
         aspectClass,
         className || "",
       ].join(" ")}
@@ -35,7 +36,7 @@ export default function ImageSlot({
       {children ? (
         children
       ) : (
-        <div className="h-full w-full grid place-items-center border border-dashed border-black/30 dark:border-white/30 text-xs uppercase tracking-widest opacity-70">
+        <div className="h-full w-full grid place-items-center border border-dashed border-line-strong text-label uppercase text-muted">
           {label}
         </div>
       )}
