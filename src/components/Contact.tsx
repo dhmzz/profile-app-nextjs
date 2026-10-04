@@ -9,11 +9,11 @@ export default function Contact() {
       <div className="page-container grid grid-cols-12 gap-x-8 gap-y-12 pt-6 lg:pt-10">
         <div className="col-span-12 lg:col-span-6 flex flex-col gap-4 text-sm" data-aos="fade-up" data-aos-delay="100">
           <h2 id="contact-heading" className="text-display uppercase">
-            Let&apos;s Connect
+            Let&apos;s Build Something
           </h2>
           <p className="max-w-lg leading-relaxed text-soft">
-            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your
-            visions. Feel free to reach out to me via email or through my social media channels.
+            I&apos;m open to software engineering opportunities, interesting projects, and collaborations. If
+            you&apos;d like to work together or simply want to talk about software, feel free to reach out.
           </p>
         </div>
 
@@ -23,7 +23,7 @@ export default function Contact() {
           data-aos-delay="100"
         >
           <div className="flex flex-col">
-            <h3 className="text-label uppercase text-muted">Direct</h3>
+            <h3 className="text-label uppercase text-muted">Contact</h3>
             <div className="mt-4 flex flex-col gap-2">
               <a
                 href="https://wa.me/6285733841588"

@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "title": "Framework for backend development",
-    "sub": ".NET Core, NestJS, ExpressJS, Laravel, Codeigniter"
+    "title": "Backend",
+    "sub": ".NET Core, ASP.NET, NestJS, Elysia, ExpressJS, Laravel, CodeIgniter"
   },
   {
     "id": 2,
-    "title": "Framework for frontend development",
-    "sub": "VueJS, ReactJS, Blade, Razor"
+    "title": "Frontend",
+    "sub": "Vue.js, React.js, Next.js, TypeScript, Blade, Razor"
   },
   {
     "id": 3,
     "title": "Databases",
-    "sub": "MySQL, MsSql, Redis, PostgreSQL, MongoDB"
+    "sub": "MySQL, SQL Server, PostgreSQL, MongoDB, Redis"
   }
 ]

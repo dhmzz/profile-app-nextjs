@@ -6,12 +6,12 @@ export default function Hero() {
       <section className="mt-12" aria-labelledby="hero-heading">
         <SectionHeader
           index="01"
-          label="Hi there"
+          label="Hi, I'm Dhimaz."
           aside={
             <>
-              Selected work
+              Full-Stack Developer
               <br />
-              <span className="text-muted">2023 – 2025</span>
+              <span className="text-muted">2023 – Present</span>
             </>
           }
         />
@@ -20,7 +20,8 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:items-end">
             <div className="lg:col-span-4 flex flex-col gap-2 text-sm" data-aos="fade-right" data-aos-delay="200">
               <p className="max-w-xs text-soft">
-                Welcome to Dhimaz&apos;s online portfolio. An experienced full-stack web developer.
+                {/* Welcome to Dhimaz&apos;s online portfolio. An experienced full-stack web developer. */}
+                I build scalable and maintainable web applications across frontend, backend, databases, and deployment.
               </p>
             </div>
 

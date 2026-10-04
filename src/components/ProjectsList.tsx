@@ -29,18 +29,18 @@ export default function ProjectsList() {
 
   return (
     <section id="projects" aria-labelledby="projects-heading" className="mt-24 lg:mt-32">
-      <SectionHeader index="02" label="Works" aside="Selected" />
+      <SectionHeader index="02" label="Projects" aside="Selected Work" />
 
       <div className="page-container pt-6 lg:pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:items-end">
           <div className="lg:col-span-6 flex flex-col gap-2 text-sm" data-aos="fade-right" data-aos-delay="100">
             <p className="max-w-xs text-soft">
-              I&apos;ve been fortunate to work with a lot of awesome people on even more awesome projects.
+              A selection of applications and systems I&apos;ve worked on across enterprise and business environments.
             </p>
           </div>
           <div className="lg:col-span-6" data-aos="fade-left" data-aos-delay="100">
             <h2 id="projects-heading" className="text-display uppercase">
-              Recent Projects
+              Selected Projects
             </h2>
           </div>
         </div>

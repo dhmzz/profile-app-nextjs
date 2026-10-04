@@ -3,7 +3,7 @@ import SectionHeader from "./SectionHeader";
 export default function About() {
   return (
     <section id="about" aria-labelledby="about-heading" className="mt-24 lg:mt-32">
-      <SectionHeader index="03" label="Get to know me" aside="My work" />
+      <SectionHeader index="03" label="Get to know me" aside="How I work" />
 
       <div className="page-container pt-6 lg:pt-10">
         <h2 id="about-heading" className="text-2xl font-semibold tracking-tight mb-8" data-aos="fade-up">
@@ -13,19 +13,22 @@ export default function About() {
           <div data-aos="fade-up" data-aos-delay="100">
             <h3 className="text-label uppercase text-muted mb-3">Strategic Approach</h3>
             <p className="leading-relaxed text-soft">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+              I start by understanding the problem, business requirements, and existing system before deciding how to
+              approach a solution.
             </p>
           </div>
           <div data-aos="fade-up" data-aos-delay="200">
             <h3 className="text-label uppercase text-muted mb-3">Collaboration is Key</h3>
             <p className="leading-relaxed text-soft">
-              Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+              Good software is built through collaboration. I work closely with developers, stakeholders, and users to
+              turn requirements into practical solutions.
             </p>
           </div>
           <div data-aos="fade-up" data-aos-delay="300">
             <h3 className="text-label uppercase text-muted mb-3">End to End Delivery</h3>
             <p className="leading-relaxed text-soft">
-              Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
+              I enjoy working across the development lifecycle, from database design and backend APIs to frontend
+              implementation, deployment, and maintenance.
             </p>
           </div>
         </div>
