@@ -12,7 +12,7 @@ Open http://localhost:3005 in your browser to see the result.
 
 Landing page has been rebuilt using modular components in `src/components`:
 - Header, Hero, ProjectsList (JSON-driven), About, Services, Numbers, Footer.
-Add your project images in `public/images/projects/` and custom font in `public/fonts/custom.woff2`.
+Add your project images in `public/images/projects/`. Typography uses [Geist](https://vercel.com/font) via `next/font`, loaded in `src/app/layout.tsx`.
 
 To run a production build on port 3005:
 

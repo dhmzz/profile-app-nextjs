@@ -9,13 +9,8 @@ export default function TechTags({
 
   return (
     <div className={`flex flex-wrap gap-2 ${className}`}>
-      {tags.map((tech, index) => (
-        <span
-          key={tech}
-          data-aos="fade-up"
-          data-aos-delay={index * 50}
-          className="px-3 py-1 text-label uppercase font-medium border border-line-strong text-muted rounded-sm"
-        >
+      {tags.map((tech) => (
+        <span key={tech} className="label rounded-sm border border-line px-3 py-1.5 text-muted">
           {tech}
         </span>
       ))}

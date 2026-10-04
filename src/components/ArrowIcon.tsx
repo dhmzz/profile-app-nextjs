@@ -17,11 +17,10 @@ export default function ArrowIcon({
       ].join(" ")}
     >
       <path
-        d="M3.5 8h9m0 0-3.5-3.5M12.5 8 9 11.5"
+        d="M9.333 12.666 14 8 9.333 3.333M14 8H1.333"
         stroke="currentColor"
         strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeMiterlimit="10"
       />
     </svg>
   );

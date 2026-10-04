@@ -1,26 +1,22 @@
 import servicesData from "@/data/services.json";
-import ArrowIcon from "./ArrowIcon";
 
-export default function Services() {
+export default function Services({ className = "" }: { className?: string }) {
   const items = servicesData;
   return (
-    <section aria-labelledby="services-heading" className="page-container mt-16 lg:mt-24">
-      <h2 id="services-heading" className="text-2xl font-semibold tracking-tight mb-8" data-aos="fade-up">
-        Skills
-      </h2>
-      <ul className="divide-y divide-line border-b border-line">
-        {items.map((s, index) => (
-          <li key={s.id} className="py-4 lg:py-6" data-aos="fade-up" data-aos-delay={index * 100}>
-            <div className="flex items-center justify-between gap-6">
-              <div>
-                <p className="text-lg font-medium">{s.title}</p>
-                <p className="text-label uppercase text-muted mt-1">{s.sub}</p>
-              </div>
-              <ArrowIcon className="text-muted" />
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <ul className={`flex w-full flex-col gap-y-6 ${className}`}>
+      {items.map((s, index) => (
+        <li
+          key={s.id}
+          className="flex w-full flex-col items-start gap-y-2 border-b border-line pb-6 sm:flex-row sm:gap-y-0"
+        >
+          <div className="label mt-[0.2rem] w-16">{String(index + 1).padStart(2, "0")}</div>
+          <div className="flex flex-1 flex-col items-start gap-y-1">
+            <p>{s.title}</p>
+            {/* Looser leading only where the list is long enough to wrap */}
+            <p className="label text-muted max-md:leading-[1.3]">{s.sub}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 }

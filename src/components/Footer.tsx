@@ -1,29 +1,27 @@
 export default function Footer() {
   return (
-    <footer className="page-container mt-16 lg:mt-24">
-      <div className="border-t border-line py-10 lg:py-16">
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 text-sm" data-aos="fade-up">
-          <p className="text-muted">© {new Date().getFullYear()} Dhimaz</p>
-          <nav aria-label="Footer">
-            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-label uppercase">
-              <li>
-                <a className="hover:underline underline-offset-4" href="#projects">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a className="hover:underline underline-offset-4" href="#about">
-                  About
-                </a>
-              </li>
-              <li>
-                <a className="hover:underline underline-offset-4" href="#contact">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+    <footer className="mt-34 flex flex-col gap-y-2">
+      <div className="h-px bg-line" />
+      <div className="grid-12">
+        <nav
+          aria-label="Footer"
+          className="col-span-2 justify-self-start lg:col-span-5 lg:col-start-6 lg:row-start-1"
+        >
+          <ul className="mt-8 mb-16 flex flex-col flex-wrap items-start gap-4 sm:my-0 sm:flex-row">
+            <li>
+              <a href="#projects" className="block">Projects</a>
+            </li>
+            <li>
+              <a href="#about" className="block">About</a>
+            </li>
+            <li>
+              <a href="#contact" className="block">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <p className="label col-span-2 self-end justify-self-start text-muted md:col-span-1 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:self-auto">
+          © {new Date().getFullYear()} Dhimaz
+        </p>
       </div>
     </footer>
   );

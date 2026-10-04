@@ -1,95 +1,274 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
+  /* Light is the mirror of the reference palette, which only ships dark. */
   --background: #ffffff;
-  --foreground: #171717;
-
-  /* Derived text/line tones so light and dark stay in sync from one source. */
-  --soft: color-mix(in oklab, var(--foreground) 80%, var(--background));
-  --muted: color-mix(in oklab, var(--foreground) 65%, var(--background));
-  --line: color-mix(in oklab, var(--foreground) 10%, var(--background));
-  --line-strong: color-mix(in oklab, var(--foreground) 20%, var(--background));
+  --foreground: #000000;
+  --muted: #6e6e6e;
+  --line: color-mix(in srgb, var(--foreground) 15%, transparent);
 }
 
+/* Dark: the system preference, unless ThemeToggle has set data-theme on <html> */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --background: #000000;
+    --foreground: #ffffff;
+    --muted: #808080;
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #808080;
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-display: var(--font-clash), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-soft: var(--soft);
   --color-muted: var(--muted);
   --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
-
-  /* Hero wordmark: 48px -> 112px */
-  --text-display-xl: clamp(3rem, 0.5rem + 8.3vw, 7rem);
-  --text-display-xl--line-height: 0.9;
-  --text-display-xl--letter-spacing: -0.04em;
-  --text-display-xl--font-weight: 800;
-
-  /* Chapter titles: 48px -> 64px */
-  --text-display: clamp(3rem, 1.75rem + 3.2vw, 4rem);
-  --text-display--line-height: 0.95;
-  --text-display--letter-spacing: -0.03em;
-  --text-display--font-weight: 800;
-
-  /* Small uppercase caps labels used throughout */
-  --text-label: 0.75rem;
-  --text-label--line-height: 1rem;
-  --text-label--letter-spacing: 0.1em;
 }
 
-@utility page-container {
-  margin-inline: auto;
-  max-width: var(--container-7xl);
-  padding-inline: --spacing(4);
+@theme static {
+  /* Same breakpoints as the reference: 480 / 768 / 992 */
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 62rem;
 
-  @media (width >= --theme(--breakpoint-sm)) {
-    padding-inline: --spacing(6);
-  }
-
-  @media (width >= --theme(--breakpoint-lg)) {
-    padding-inline: --spacing(8);
-  }
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-reveal: cubic-bezier(0, 0, 0.2, 1);
 }
 
 @layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-size: 1.125rem;
+    font-weight: 500;
+    /* A percentage on purpose: descendants inherit the computed 23.4px, not the ratio, as in the reference */
+    line-height: 130%;
+    /* Inter's display cut */
+    font-variation-settings: "opsz" 32;
+  }
+
+  p {
+    line-height: 1.3;
+  }
+
+  a {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+
+  a:hover {
+    opacity: 0.6;
+  }
+
   :where(a, button):focus-visible {
     outline: 1px solid var(--foreground);
     outline-offset: 4px;
   }
 }
 
-html {
-  scroll-padding-top: 2rem;
-}
+@layer components {
+  .page-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding-inline: 1.5rem;
 
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+    @media (width >= --theme(--breakpoint-lg)) {
+      padding-inline: 3rem;
+    }
+  }
+
+  /* 12 columns on desktop, 3 on tablet, 2 on phones */
+  .grid-12 {
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(16px, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 3rem;
+    align-content: end;
+    align-items: start;
+
+    @media (width >= --theme(--breakpoint-md)) {
+      grid-template-columns: repeat(3, minmax(16px, 1fr));
+      row-gap: 1rem;
+    }
+
+    @media (width >= --theme(--breakpoint-lg)) {
+      grid-template-columns: repeat(12, minmax(16px, 1fr));
+      column-gap: 1rem;
+    }
+  }
+
+  /* Small uppercase caps labels used throughout */
+  .label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+
+    @media (width >= --theme(--breakpoint-sm)) {
+      font-size: 0.6875rem;
+    }
+  }
+
+  .heading-huge,
+  .heading-large,
+  .heading-3,
+  .number-large {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  .heading-huge,
+  .heading-large,
+  .heading-3 {
+    text-transform: uppercase;
+  }
+
+  .heading-huge,
+  .heading-large,
+  .number-large {
+    line-height: 0.78;
+  }
+
+  /* Chapter titles */
+  .heading-huge {
+    font-size: 2rem;
+
+    @media (width >= --theme(--breakpoint-sm)) {
+      font-size: 3rem;
+    }
+
+    @media (width >= --theme(--breakpoint-md)) {
+      font-size: 8vw;
+    }
+  }
+
+  .heading-large {
+    font-size: 1.5rem;
+
+    @media (width >= --theme(--breakpoint-sm)) {
+      font-size: 3rem;
+    }
+
+    @media (width >= --theme(--breakpoint-md)) {
+      font-size: 8vw;
+    }
+
+    @media (width >= --theme(--breakpoint-lg)) {
+      font-size: 6vw;
+    }
+  }
+
+  .number-large {
+    font-size: 3rem;
+
+    @media (width >= --theme(--breakpoint-md)) {
+      font-size: 8vw;
+    }
+
+    @media (width >= --theme(--breakpoint-lg)) {
+      font-size: 6vw;
+    }
+  }
+
+  .heading-3 {
+    font-size: 1.5rem;
+    line-height: 1;
+
+    @media (width >= --theme(--breakpoint-sm)) {
+      font-size: 1.25rem;
+    }
+
+    @media (width >= --theme(--breakpoint-lg)) {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* A line that slides up out of its overflow-hidden parent once a Reveal ancestor is in view */
+  .reveal-line {
+    display: block;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+html {
+  scroll-padding-top: 2rem;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  [data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition-duration: 0ms !important;
-    transition-delay: 0ms !important;
+/* Motion below plays regardless of prefers-reduced-motion, as the reference does. */
+
+@keyframes load-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--load-y, 2rem), 0);
+  }
+}
+
+@keyframes load-grow {
+  from {
+    width: 0;
+  }
+}
+
+.reveal-line {
+  transform: translate3d(0, 100%, 0);
+  transition: transform var(--reveal-dur, 1000ms) var(--ease-reveal)
+    var(--reveal-delay, 0ms);
+}
+
+[data-inview] .reveal-line {
+  transform: none;
+}
+
+/* Page-load entrance */
+@media (width >= --theme(--breakpoint-md)) {
+  .load-rise {
+    animation: load-rise var(--load-dur, 1000ms) var(--ease-reveal)
+      var(--load-delay, 1000ms) backwards;
+  }
+
+  .load-grow {
+    animation: load-grow 1400ms var(--ease-out-quad) 500ms backwards;
+  }
+}
+
+/* Scroll-linked: --p is written by useScrollProgress */
+@media (width >= --theme(--breakpoint-lg)) {
+  .hero-scroll {
+    transform: translate3d(0, calc(var(--p, 0) * 50%), 0);
+    opacity: calc(1 - var(--p, 0) / 0.75);
+  }
+
+  .footer-reveal {
+    /* Done at 38% progress, or as soon as it is fully in view on tall screens that never get that far */
+    --t: min(var(--p, 1) / min(0.38, var(--p-full, 0.38)), 1);
+    transform: translate3d(0, calc((var(--t) - 1) * 50%), 0);
+    opacity: var(--t);
   }
 }
