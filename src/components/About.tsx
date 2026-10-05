@@ -41,7 +41,7 @@ export default function About() {
         <div className="grid-12 gap-y-8 lg:gap-y-30">
           <img
             src="/images/PHOTO.jpg"
-            alt="Portrait of Dhimaz"
+            alt="Portrait of Dhimaz Nur Ramadhan"
             width={96}
             height={96}
             loading="lazy"

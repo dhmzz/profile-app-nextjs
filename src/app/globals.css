@@ -8,6 +8,9 @@
   --foreground: #000000;
   --muted: #6e6e6e;
   --line: color-mix(in srgb, var(--foreground) 15%, transparent);
+
+  /* Text of the ThemeToggle hint: the theme a click switches to */
+  --theme-hint: "Switch to dark mode";
 }
 
 /* Dark: the system preference, unless ThemeToggle has set data-theme on <html> */
@@ -18,6 +21,7 @@
     --background: #000000;
     --foreground: #ffffff;
     --muted: #808080;
+    --theme-hint: "Switch to light mode";
   }
 }
 
@@ -27,6 +31,7 @@
   --background: #000000;
   --foreground: #ffffff;
   --muted: #808080;
+  --theme-hint: "Switch to light mode";
 }
 
 @theme inline {
@@ -256,6 +261,42 @@ html {
   .load-grow {
     animation: load-grow 1400ms var(--ease-out-quad) 500ms backwards;
   }
+}
+
+/* ThemeToggle hint: shows for a few seconds once the page has loaded, after that only on hover or focus */
+@keyframes theme-hint {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -0.25rem, 0);
+  }
+
+  8%,
+  88% {
+    opacity: 1;
+    transform: none;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.theme-hint {
+  animation: theme-hint 5s var(--ease-reveal) 1s backwards;
+
+  /* Wait for the page-load entrance to finish */
+  @media (width >= --theme(--breakpoint-md)) {
+    animation-delay: 2.4s;
+  }
+}
+
+.theme-hint::after {
+  content: var(--theme-hint);
+}
+
+/* A stored choice means the visitor already knows the toggle, so skip the intro */
+:root[data-theme] .theme-hint {
+  animation: none;
 }
 
 /* Scroll-linked: --p is written by useScrollProgress */

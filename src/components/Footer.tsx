@@ -19,8 +19,8 @@ export default function Footer() {
             </li>
           </ul>
         </nav>
-        <p className="label col-span-2 self-end justify-self-start text-muted md:col-span-1 lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:self-auto">
-          © {new Date().getFullYear()} Dhimaz
+        <p className="label col-span-2 self-end justify-self-start text-muted md:col-span-1 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:self-auto">
+          © {new Date().getFullYear()} Dhimaz Nur Ramadhan — Full-Stack Developer
         </p>
       </div>
     </footer>
