@@ -32,7 +32,7 @@ export default function ThemeToggle() {
       {/* Hint: its text and intro animation come from globals.css (.theme-hint) */}
       <span
         aria-hidden
-        className="theme-hint label pointer-events-none absolute top-full left-0 mt-3 bg-foreground px-2 py-1.5 whitespace-nowrap text-background opacity-0 transition-opacity duration-200 peer-hover:opacity-100 peer-focus-visible:opacity-100"
+        className="theme-hint label pointer-events-none absolute top-full left-0 mt-2 bg-foreground px-2 py-1.5 whitespace-nowrap text-background opacity-0 transition-opacity duration-200 peer-hover:opacity-100 peer-focus-visible:opacity-100"
       />
     </span>
   );

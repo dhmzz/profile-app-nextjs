@@ -10,7 +10,7 @@
   --line: color-mix(in srgb, var(--foreground) 15%, transparent);
 
   /* Text of the ThemeToggle hint: the theme a click switches to */
-  --theme-hint: "Switch to dark mode";
+  --theme-hint: "Click to switch to dark mode";
 }
 
 /* Dark: the system preference, unless ThemeToggle has set data-theme on <html> */
@@ -21,7 +21,7 @@
     --background: #000000;
     --foreground: #ffffff;
     --muted: #808080;
-    --theme-hint: "Switch to light mode";
+    --theme-hint: "Click to switch to light mode";
   }
 }
 
@@ -31,7 +31,7 @@
   --background: #000000;
   --foreground: #ffffff;
   --muted: #808080;
-  --theme-hint: "Switch to light mode";
+  --theme-hint: "Click to switch to light mode";
 }
 
 @theme inline {
@@ -292,6 +292,17 @@ html {
 
 .theme-hint::after {
   content: var(--theme-hint);
+}
+
+/* Little arrow on the top-left edge, centred under the 11px toggle square */
+.theme-hint::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0.5px;
+  border: 5px solid transparent;
+  border-top-width: 0;
+  border-bottom: 6px solid var(--foreground);
 }
 
 /* A stored choice means the visitor already knows the toggle, so skip the intro */
