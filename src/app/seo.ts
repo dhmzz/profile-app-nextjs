@@ -5,7 +5,7 @@ export const FULL_NAME = "Dhimaz Nur Ramadhan";
 export const JOB_TITLE = "Full-Stack Developer";
 
 export const TITLE = `${FULL_NAME} | ${JOB_TITLE}`;
-export const DESCRIPTION = `${FULL_NAME} (Dhimaz) is a Full-Stack Software Engineer based in Malang, Indonesia. Portfolio of enterprise web applications built with .NET, NestJS, Vue.js, and SQL Server.`;
+export const DESCRIPTION = `${FULL_NAME} (Dhimaz) is a Full-Stack Developer based in Malang, Indonesia. Portfolio of enterprise web applications built with .NET, NestJS, Vue.js, and SQL Server.`;
 
 export const SOCIALS = [
   "https://www.linkedin.com/in/dhimaznurramadhan/",
@@ -21,7 +21,7 @@ export const personJsonLd = {
   alternateName: ["Dhimaz", "Dhimaz Nur Ramadhan"],
   url: SITE_URL,
   image: `${SITE_URL}/images/PHOTO.jpg`,
-  jobTitle: "Full-Stack Software Engineer",
+  jobTitle: JOB_TITLE,
   description: DESCRIPTION,
   homeLocation: {
     "@type": "Place",

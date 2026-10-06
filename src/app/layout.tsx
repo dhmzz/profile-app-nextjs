@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     "Dhimaz Binus",
     "Dhimaz Malang",
     "Full-Stack Developer",
-    "Software Engineer",
     "Binus University",
     "Malang",
     "Indonesia",

@@ -57,10 +57,7 @@ export default function About() {
               <span className="reveal-line">I&apos;m a Full-Stack </span>
             </span>
             <span className="block overflow-hidden">
-              <span className="reveal-line [--reveal-delay:150ms] [--reveal-dur:850ms]">Software </span>
-            </span>
-            <span className="block overflow-hidden">
-              <span className="reveal-line [--reveal-delay:300ms] [--reveal-dur:700ms]">Engineer</span>
+              <span className="reveal-line [--reveal-delay:150ms] [--reveal-dur:850ms]">Developer</span>
             </span>
           </Reveal>
           <div className="label col-span-full lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:self-end lg:justify-self-start">
