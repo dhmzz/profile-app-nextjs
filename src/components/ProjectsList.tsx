@@ -1,4 +1,5 @@
-import ProjectItem, { Project } from "./ProjectItem";
+import { Project } from "./ProjectItem";
+import ProjectItems from "./ProjectItems";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import projectsData from "@/data/projects.json";
@@ -45,9 +46,7 @@ export default function ProjectsList() {
         {/* Positioning context for each project's floating preview */}
         <div className="relative mt-16 flex w-full items-center">
           <div className="flex w-full flex-col gap-y-16 lg:w-[41%] lg:gap-y-0">
-            {projects.map((p) => (
-              <ProjectItem key={p.id} project={p} />
-            ))}
+            <ProjectItems projects={projects} />
           </div>
         </div>
       </div>
