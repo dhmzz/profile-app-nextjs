@@ -16,16 +16,34 @@ export type Block =
   | { type: "numbered"; items: { title: string; text: string }[] }
   | { type: "table"; head: string[]; rows: string[][] }
   | { type: "code"; text: string }
-  /** A left-to-right flow; `note` is what happens alongside each step. */
-  | { type: "steps"; items: { title: string; note?: string }[] }
   /** A numbered part of a longer section, with its own blocks. */
   | { type: "part"; title: string; blocks: Block[] };
+
+/** A process explained for readers who don't need the technical detail. */
+export type Flow = {
+  title: string;
+  steps: {
+    title: string;
+    text: string;
+    /** Who does this step. */
+    actor: string;
+    /** True when no person has to act. */
+    automatic?: boolean;
+    /** What gets sent at this step. */
+    message?: string;
+    /** The one way the process can end early from here. */
+    branch?: string;
+  }[];
+  note?: string;
+};
 
 export type Section = {
   id: string;
   /** Short name for the section header and the contents list. */
   label: string;
   title: string;
+  /** Shown full width before the section's content. */
+  flow?: Flow;
   blocks: Block[];
   /** Shown full width after the section's content. */
   figure?: Figure;

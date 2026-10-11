@@ -11,6 +11,9 @@
 
   /* Text of the ThemeToggle hint: the theme a click switches to */
   --theme-hint: "Click to switch to dark mode";
+
+  /* Tint at the top and bottom edge of project images; none on light, where the screenshots are white too */
+  --image-fade: transparent;
 }
 
 /* Dark: the system preference, unless ThemeToggle has set data-theme on <html> */
@@ -22,6 +25,7 @@
     --foreground: #ffffff;
     --muted: #808080;
     --theme-hint: "Click to switch to light mode";
+    --image-fade: rgb(0 0 0 / 0.7);
   }
 }
 
@@ -32,6 +36,7 @@
   --foreground: #ffffff;
   --muted: #808080;
   --theme-hint: "Click to switch to light mode";
+  --image-fade: rgb(0 0 0 / 0.7);
 }
 
 @theme inline {
@@ -260,6 +265,118 @@ html {
 
   .load-grow {
     animation: load-grow 1400ms var(--ease-out-quad) 500ms backwards;
+  }
+}
+
+/* FlowDiagram: the track draws in, the steps follow one by one, then a dot keeps travelling along it.
+   Vertical below lg, horizontal from lg up. */
+.flow-line {
+  transform: scaleY(0);
+  transform-origin: top left;
+  transition: transform 1400ms var(--ease-out-quad);
+}
+
+.flow-step {
+  opacity: 0;
+  transform: translate3d(0, 1.5rem, 0);
+  transition:
+    opacity 900ms var(--ease-reveal) var(--flow-delay, 0ms),
+    transform 900ms var(--ease-reveal) var(--flow-delay, 0ms);
+}
+
+[data-inview] .flow-line,
+[data-inview] .flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes flow-travel-y {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  4%,
+  94% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes flow-travel-x {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  4%,
+  94% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.flow-dot {
+  top: 0;
+  left: 0;
+  background: #ff2d2d;
+  opacity: 0;
+}
+
+[data-inview] .flow-dot {
+  animation: flow-travel-y 7s linear 1.6s infinite;
+}
+
+/* A short tail trailing the dot along the track, fading out at its far end */
+.flow-dot::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 4px;
+  width: 1px;
+  height: 3.5rem;
+  background: linear-gradient(to top, #ff2d2d, transparent);
+}
+
+/* Keeps the tail from poking out past the start of the track */
+.flow {
+  overflow: clip;
+}
+
+/* Hovering one step dims the others */
+.flow-body {
+  transition: opacity 300ms;
+}
+
+.flow:has(.flow-body:hover) .flow-body:not(:hover) {
+  opacity: 0.35;
+}
+
+@media (width >= --theme(--breakpoint-lg)) {
+  .flow-line {
+    transform: scaleX(0);
+  }
+
+  [data-inview] .flow-dot {
+    animation-name: flow-travel-x;
+  }
+
+  .flow-dot::before {
+    top: 4px;
+    right: 100%;
+    bottom: auto;
+    left: auto;
+    width: 3.5rem;
+    height: 1px;
+    background: linear-gradient(to left, #ff2d2d, transparent);
   }
 }
 

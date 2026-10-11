@@ -107,10 +107,10 @@ export default function ProjectItem({
             // Full width at its natural height, so nothing is cropped
             <div className="relative">
               <img src={project.imagePath} alt={project.title} loading="lazy" className="h-auto w-full" />
-              {/* Top and bottom edges fade lightly into the page colour so screenshots sit in the theme */}
+              {/* Dark theme only: top and bottom edges fade lightly into the page (see --image-fade) */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--background)_70%,transparent),transparent_14%,transparent_86%,color-mix(in_srgb,var(--background)_70%,transparent))]"
+                className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,var(--image-fade),transparent_14%,transparent_86%,var(--image-fade))]"
               />
             </div>
           ) : (

@@ -4,6 +4,7 @@ import type { Block, CaseStudy, Figure } from "@/data/case-studies/types";
 import ArrowIcon from "./ArrowIcon";
 import Contact from "./Contact";
 import FitText from "./FitText";
+import FlowDiagram from "./FlowDiagram";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 
@@ -123,22 +124,6 @@ function Blocks({ blocks }: { blocks: Block[] }) {
               </pre>
             );
 
-          case "steps":
-            return (
-              <ol key={i} className="flex flex-col border-t border-line">
-                {block.items.map((step, n) => (
-                  <li
-                    key={step.title}
-                    className="flex flex-col gap-y-2 border-b border-line py-4 sm:flex-row sm:items-baseline sm:gap-x-4"
-                  >
-                    <span className="label w-10 shrink-0">{pad(n + 1)}</span>
-                    <span className="flex-1">{step.title}</span>
-                    {step.note && <span className="label text-muted sm:text-right">{step.note}</span>}
-                  </li>
-                ))}
-              </ol>
-            );
-
           case "part":
             part += 1;
             return (
@@ -230,6 +215,12 @@ export default function CaseStudyPage({ study }: { study: CaseStudy }) {
           <section key={section.id} id={section.id} aria-labelledby={`${section.id}-heading`} className="pb-20 sm:pb-32">
             <div className="page-container">
               <SectionHeader className="mb-12 lg:mb-20" items={[pad(i + 1), section.label]} />
+
+              {section.flow && (
+                <div className="mb-20 lg:mb-28">
+                  <FlowDiagram flow={section.flow} />
+                </div>
+              )}
 
               <div className="grid-12 gap-y-10">
                 {/* Stays in view on desktop while the section's content scrolls past */}

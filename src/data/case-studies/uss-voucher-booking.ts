@@ -89,20 +89,46 @@ export const ussVoucherBooking: CaseStudy = {
       id: "solution",
       label: "Solution",
       title: "The solution",
+      flow: {
+        title: "How a booking moves, start to finish",
+        steps: [
+          {
+            title: "Pick a ticket and date",
+            text: "The buyer chooses a ticket and the day they want to visit. Only dates that have a price can be picked.",
+            actor: "Customer / Agent",
+          },
+          {
+            title: "Booking is created",
+            text: "The system works out the price and creates the booking. Agents can hold it for a while; customers pay right away.",
+            actor: "System",
+            automatic: true,
+            message: "WhatsApp: booking details and payment link",
+          },
+          {
+            title: "Pay online",
+            text: "The buyer pays on an online payment page. The payment is confirmed automatically; nobody checks it by hand.",
+            actor: "Customer / Agent",
+            message: "WhatsApp: payment received, to the buyer and the admin",
+            branch: "Not paid in time? The booking cancels itself and the buyer is told.",
+          },
+          {
+            title: "Voucher is prepared",
+            text: "An admin sees the paid booking in their queue and uploads the voucher.",
+            actor: "Admin",
+            message: "WhatsApp: voucher ready",
+          },
+          {
+            title: "Voucher received",
+            text: "The buyer downloads the voucher from the website whenever they need it.",
+            actor: "Customer / Agent",
+          },
+        ],
+        note: "The admin steps in once, to upload the voucher. Everything else is done by the buyer or by the system.",
+      },
       blocks: [
         {
-          type: "steps",
-          items: [
-            { title: "Pick a product and date" },
-            { title: "Booking created", note: "WhatsApp: payment link" },
-            { title: "Pay through Xendit", note: "WhatsApp: to the user and the admin" },
-            { title: "Admin uploads the voucher", note: "WhatsApp: voucher ready" },
-            { title: "Voucher received", note: "Download on the web" },
-          ],
-        },
-        {
           type: "text",
-          text: "Booking status: `HOLD` / `PENDING_PAYMENT` → `CONFIRMED` → `WAITING_FOR_VOUCHER` → `VOUCHER_ISSUED`, or `CANCELLED` if it is not paid before the deadline.",
+          text: "Booking status: **Hold** / **Pending payment** → **Confirmed** → **Waiting for voucher** → **Voucher issued**, or **Cancelled** if it is not paid before the deadline.",
         },
         {
           type: "part",
@@ -167,7 +193,7 @@ export const ussVoucherBooking: CaseStudy = {
               type: "table",
               head: ["", "Agent (B2B)", "Customer (B2C)"],
               rows: [
-                ["Initial status", "`HOLD`", "`PENDING_PAYMENT`"],
+                ["Initial status", "**Hold**", "**Pending payment**"],
                 ["Payment deadline (default)", "120 minutes", "30 minutes"],
                 ["Visit date limit", "None", "D+2 at the earliest"],
               ],
@@ -210,7 +236,7 @@ export const ussVoucherBooking: CaseStudy = {
           blocks: [
             {
               type: "text",
-              text: "An admin uploads the voucher (PDF/JPG/PNG, up to 5 MB) from the booking detail page. The status changes to `VOUCHER_ISSUED` and the user is notified over WhatsApp straight away. If a voucher needs revising, the admin just uploads again: the old version is kept, and the user always gets the latest one. Files are stored outside the public folder and can only be downloaded by the logged-in owner of the booking.",
+              text: "An admin uploads the voucher (PDF/JPG/PNG, up to 5 MB) from the booking detail page. The status changes to **Voucher issued** and the user is notified over WhatsApp straight away. If a voucher needs revising, the admin just uploads again: the old version is kept, and the user always gets the latest one. Files are stored outside the public folder and can only be downloaded by the logged-in owner of the booking.",
             },
           ],
         },
@@ -277,7 +303,7 @@ export const ussVoucherBooking: CaseStudy = {
             },
             {
               title: "\"Expired\" is not its own status",
-              text: "An expired booking is stored as `CANCELLED` with the reason `PAYMENT_EXPIRED` and the actor `SYSTEM`. Reporting is simpler because every cancellation lives in one status, yet the cause stays traceable.",
+              text: "An expired booking is stored as **Cancelled** with the reason **Payment expired** and the actor **System**. Reporting is simpler because every cancellation lives in one status, yet the cause stays traceable.",
             },
             {
               title: "Thin controllers, logic in services",
