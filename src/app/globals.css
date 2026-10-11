@@ -263,6 +263,25 @@ html {
   }
 }
 
+/* Blinking marker beside "Latest case study": red so it reads as a notification on either theme */
+@keyframes notif-blink {
+  0%,
+  40%,
+  100% {
+    opacity: 1;
+  }
+
+  50%,
+  90% {
+    opacity: 0.12;
+  }
+}
+
+.notif-dot {
+  background: #ff2d2d;
+  animation: notif-blink 1.6s linear infinite;
+}
+
 /* ThemeToggle hint: shows for a few seconds once the page has loaded, after that only on hover or focus */
 @keyframes theme-hint {
   0% {

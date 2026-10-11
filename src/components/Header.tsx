@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
@@ -8,22 +9,22 @@ export default function Header() {
         className="mt-2 flex flex-col items-start gap-y-8 sm:flex-row sm:items-center sm:justify-between"
         aria-label="Primary"
       >
-        <a href="#" className="load-rise text-[0.6875rem] font-semibold hover:opacity-100">
+        <Link href="/" className="load-rise text-[0.6875rem] font-semibold hover:opacity-100">
           DHIMAZ ©
-        </a>
+        </Link>
         <ul className="load-rise flex w-full items-center justify-between gap-x-6 [--load-delay:1100ms] [--load-dur:900ms] sm:w-auto sm:justify-start">
           <li>
             <ThemeToggle />
           </li>
           <li>
-            <a href="#projects" className="block text-[0.6875rem]">
+            <Link href="/#projects" className="block text-[0.6875rem]">
               Projects
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#about" className="block text-[0.6875rem]">
+            <Link href="/#about" className="block text-[0.6875rem]">
               About
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#contact" className="block text-[0.6875rem]">

@@ -1,11 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { Fragment } from "react";
+import ArrowIcon from "./ArrowIcon";
 import FitText from "./FitText";
 import SectionHeader from "./SectionHeader";
 import { useScrollProgress } from "./useScrollProgress";
 
-export default function Hero() {
+export default function Hero({
+  caseStudy,
+}: {
+  /** The newest case study, linked from the third label column. */
+  caseStudy?: { title: string; href: string };
+}) {
   // Sinks and fades behind the next section as it scrolls away
   const ref = useScrollProgress<HTMLElement>(false);
 
@@ -29,6 +36,23 @@ export default function Hero() {
                   <span>Full-Stack Developer</span>
                   <span className="text-muted">2023 – Present</span>
                 </Fragment>,
+                ...(caseStudy
+                  ? [
+                      <Fragment key="case-study">
+                        <span className="flex items-center gap-x-2">
+                          <span aria-hidden className="notif-dot size-2" />
+                          Latest case study
+                        </span>
+                        <Link
+                          href={caseStudy.href}
+                          className="inline-flex items-center gap-x-1.5 self-start text-[length:inherit] leading-none text-muted hover:text-foreground hover:opacity-100"
+                        >
+                          {caseStudy.title}
+                          <ArrowIcon direction="up-right" className="size-3" />
+                        </Link>
+                      </Fragment>,
+                    ]
+                  : []),
               ]}
             />
 

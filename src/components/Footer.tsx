@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="mt-34 flex flex-col gap-y-2">
@@ -9,13 +11,19 @@ export default function Footer() {
         >
           <ul className="mt-8 mb-16 flex flex-col flex-wrap items-start gap-4 sm:my-0 sm:flex-row">
             <li>
-              <a href="#projects" className="block">Projects</a>
+              <Link href="/#projects" className="block">
+                Projects
+              </Link>
             </li>
             <li>
-              <a href="#about" className="block">About</a>
+              <Link href="/#about" className="block">
+                About
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="block">Contact</a>
+              <a href="#contact" className="block">
+                Contact
+              </a>
             </li>
           </ul>
         </nav>

@@ -60,7 +60,13 @@ export default function RootLayout({
 }>) {
   return (
     // suppressHydrationWarning: themeScript sets data-theme before React hydrates
-    <html lang="en" className={`${inter.variable} ${clashDisplay.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${clashDisplay.variable}`}
+      // Tells Next to jump, not smooth-scroll, to the top when the route changes
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { caseStudyPath } from "@/data/case-studies/types";
 import TechTags from "./TechTags";
 import ArrowIcon from "./ArrowIcon";
 
@@ -12,6 +14,8 @@ export type Project = {
   imagePath?: string;
   tech?: string[];
   description?: string;
+  /** Slug of this project's case study, if it has one. */
+  caseStudy?: string;
 };
 
 // Per-frame lerp factor for the preview trailing the cursor (reference smoothing: 98)
@@ -96,16 +100,19 @@ export default function ProjectItem({
       {/* Preview: a plain image above the row on small screens; from lg it floats beside the list and shows on hover */}
       <div
         ref={previewRef}
-        className="w-full max-lg:transform-none! lg:pointer-events-none lg:absolute lg:inset-y-0 lg:right-[8.5%] lg:flex lg:w-[41%] lg:items-center lg:overflow-hidden"
+        className="w-full max-lg:transform-none! lg:pointer-events-none lg:absolute lg:inset-y-0 lg:right-[8.5%] lg:flex lg:w-[41%] lg:items-center"
       >
         <div className="w-full lg:opacity-0 lg:transition-opacity lg:duration-500 lg:ease-out-quart lg:group-data-[active]:opacity-100">
           {project.imagePath ? (
-            <img
-              src={project.imagePath}
-              alt={project.title}
-              loading="lazy"
-              className="h-auto w-full object-cover lg:transition-transform lg:duration-1000 lg:ease-out-quart lg:group-data-[active]:scale-[1.075]"
-            />
+            // Full width at its natural height, so nothing is cropped
+            <div className="relative">
+              <img src={project.imagePath} alt={project.title} loading="lazy" className="h-auto w-full" />
+              {/* Top and bottom edges fade lightly into the page colour so screenshots sit in the theme */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--background)_70%,transparent),transparent_14%,transparent_86%,color-mix(in_srgb,var(--background)_70%,transparent))]"
+              />
+            </div>
           ) : (
             <div className="h-40 w-full bg-line lg:hidden" />
           )}
@@ -113,22 +120,35 @@ export default function ProjectItem({
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-pressed={pinned}
-        className="flex w-full cursor-pointer items-start justify-between text-left"
-      >
-        <span className="flex flex-col gap-y-3 sm:flex-row sm:gap-y-0 lg:transition-transform lg:duration-1000 lg:ease-out-quad lg:group-data-[active]:translate-x-6 lg:group-data-[active]:ease-out-quart">
-          <span className="label order-1 mt-[0.2rem] w-24 tabular-nums sm:order-none">{project.year}</span>
-          <span className="flex flex-col items-start gap-y-1">
-            <span className="text-[1.125rem] leading-[1.2]">{project.title}</span>
-            <span className="label text-muted">{project.category}</span>
+      <div className="flex flex-col gap-y-3">
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-pressed={pinned}
+          className="flex w-full cursor-pointer items-start justify-between text-left"
+        >
+          <span className="flex flex-col gap-y-3 sm:flex-row sm:gap-y-0 lg:transition-transform lg:duration-1000 lg:ease-out-quad lg:group-data-[active]:translate-x-6 lg:group-data-[active]:ease-out-quart">
+            <span className="label order-1 mt-[0.2rem] w-24 tabular-nums sm:order-none">{project.year}</span>
+            <span className="flex flex-col items-start gap-y-1">
+              <span className="text-[1.125rem] leading-[1.2]">{project.title}</span>
+              <span className="label text-muted">{project.category}</span>
+            </span>
           </span>
-        </span>
 
-        <ArrowIcon className="lg:transition-transform lg:duration-500 lg:ease-out-quart lg:group-data-[active]:-translate-x-2 lg:group-data-[active]:-rotate-45" />
-      </button>
+          <ArrowIcon className="lg:transition-transform lg:duration-500 lg:ease-out-quart lg:group-data-[active]:-translate-x-2 lg:group-data-[active]:-rotate-45" />
+        </button>
+
+        {/* Outside the button (a link can't sit inside one), lined up under the title and shifting with it */}
+        {project.caseStudy && (
+          <Link
+            href={caseStudyPath(project.caseStudy)}
+            className="inline-flex items-center gap-x-1.5 self-start sm:ml-24 lg:transition-transform lg:duration-1000 lg:ease-out-quad lg:group-data-[active]:translate-x-6 lg:group-data-[active]:ease-out-quart"
+          >
+            Read case study
+            <ArrowIcon direction="up-right" />
+          </Link>
+        )}
+      </div>
 
       {hasDetails && <div className="lg:hidden">{details}</div>}
 
